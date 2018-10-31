@@ -38,6 +38,7 @@ canvas {
   transform: translate(-50%, -50%);
   z-index: 1;
   color: #ffffff;
+  text-align: center;
 }
 
 #can {

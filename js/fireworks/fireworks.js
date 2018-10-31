@@ -53,7 +53,7 @@ var Fireworks = (function() {
     document.body.appendChild(mainCanvas);
     document.addEventListener('mouseup', createFirework, true);
     document.addEventListener('touchend', createFirework, true);
-    window.setInterval(createFirework, 1000);
+    window.setInterval(createFirework, 500);
 
     // and now we set off
     update();
