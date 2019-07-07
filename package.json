@@ -1,8 +1,8 @@
 {
-  "name": "harsh8398.github.io.v2",
+  "name": "harsh8398.github.io",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://harsh8398.github.io/harsh8398.github.io",
+  "homepage": "http://harsh8398.github.io/",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.19",
     "@fortawesome/free-brands-svg-icons": "^5.9.0",
