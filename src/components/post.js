@@ -4,6 +4,7 @@ import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 import Navigation from './navigation'
 import { toKebabCase } from '../helpers'
+import { useStaticQuery, graphql } from 'gatsby'
 import { Disqus, CommentCount } from 'gatsby-plugin-disqus'
 
 import style from '../styles/post.module.css'
@@ -24,9 +25,18 @@ const Post = ({
   const previousLabel = previousPost && previousPost.frontmatter.title
   const nextPath = nextPost && nextPost.frontmatter.path
   const nextLabel = nextPost && nextPost.frontmatter.title
+  const data = useStaticQuery(graphql`
+    query SiteUrlQuery {
+      site {
+        siteMetadata {
+          siteUrl
+        }
+      }
+    }
+  `)
 
   const disqusConfig = {
-    url: path,
+    url: data.site.siteMetadata.siteUrl,
     identifier: path,
     title: title,
   }
@@ -74,7 +84,7 @@ const Post = ({
               nextPath={nextPath}
               nextLabel={nextLabel}
             />
-            <Disqus config={disqusConfig} />
+            {(path!=="/about") ? <Disqus config={disqusConfig} /> : ""}
           </>
         )}
       </div>
