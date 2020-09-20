@@ -4,6 +4,7 @@ import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 import Navigation from './navigation'
 import { toKebabCase } from '../helpers'
+import { Disqus, CommentCount } from 'gatsby-plugin-disqus'
 
 import style from '../styles/post.module.css'
 
@@ -23,6 +24,12 @@ const Post = ({
   const previousLabel = previousPost && previousPost.frontmatter.title
   const nextPath = nextPost && nextPost.frontmatter.path
   const nextLabel = nextPost && nextPost.frontmatter.title
+
+  const disqusConfig = {
+    url: path,
+    identifier: path,
+    title: title,
+  }
 
   return (
     <div className={style.post}>
@@ -59,6 +66,7 @@ const Post = ({
           </>
         ) : (
           <>
+            <CommentCount config={disqusConfig} placeholder={'...'} />
             <div dangerouslySetInnerHTML={{ __html: html }} />
             <Navigation
               previousPath={previousPath}
@@ -66,6 +74,7 @@ const Post = ({
               nextPath={nextPath}
               nextLabel={nextLabel}
             />
+            <Disqus config={disqusConfig} />
           </>
         )}
       </div>
