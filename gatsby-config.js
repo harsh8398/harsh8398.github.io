@@ -115,5 +115,17 @@ module.exports = {
         icon: `src/images/profile.jpg`,
       },
     },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "UA-143614136-1",
+      },
+    },
+    {
+      resolve: `gatsby-plugin-google-adsense`,
+      options: {
+        publisherId: `ca-pub-9496610763282566`
+      },
+    },
   ],
 }
