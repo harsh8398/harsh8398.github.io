@@ -1,32 +1,27 @@
-const postCssPresetEnv = require(`postcss-preset-env`)
-const postCSSNested = require('postcss-nested')
-const postCSSUrl = require('postcss-url')
-const postCSSImports = require('postcss-import')
-const cssnano = require('cssnano')
-const postCSSMixins = require('postcss-mixins')
+const postCssPresetEnv = require(`postcss-preset-env`);
+const postCSSNested = require("postcss-nested");
+const postCSSUrl = require("postcss-url");
+const postCSSImports = require("postcss-import");
+const cssnano = require("cssnano");
+const postCSSMixins = require("postcss-mixins");
 
 module.exports = {
   siteMetadata: {
-    title: `Harsh Patel`,
-    siteUrl: `https://harsh8398.github.io`,
-    description: `Personal website and blog`,
-    copyrights: '',
+    title: `Alacrity`,
+    siteUrl: `https://blog.alacrity.dev`,
+    description: `Harsh Patel's Alacrity Blog`,
+    copyrights: "",
     author: `@harsh8398`,
     logo: {
-      src: '',
-      alt: '',
+      src: "",
+      alt: "",
     },
-    logoText: 'Harsh Patel',
-    defaultTheme: 'dark',
+    logoText: "Alacrity",
+    defaultTheme: "dark",
     postsPerPage: 5,
-    showMenuItems: 2,
-    menuMoreText: 'Show more',
-    mainMenu: [
-      {
-        title: 'About',
-        path: '/about',
-      },
-    ],
+    showMenuItems: 0,
+    menuMoreText: "Show more",
+    mainMenu: [],
   },
   plugins: [
     `babel-preset-gatsby`,
@@ -61,12 +56,12 @@ module.exports = {
           postCSSMixins(),
           postCSSNested(),
           postCssPresetEnv({
-            importFrom: 'src/styles/variables.css',
+            importFrom: "src/styles/variables.css",
             stage: 1,
             preserve: false,
           }),
           cssnano({
-            preset: 'default',
+            preset: "default",
           }),
         ],
       },
@@ -78,7 +73,7 @@ module.exports = {
       options: {
         plugins: [
           {
-            resolve: 'gatsby-remark-embed-video',
+            resolve: "gatsby-remark-embed-video",
             options: {
               related: false,
               noIframeBorder: true,
@@ -94,7 +89,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-prismjs`,
             options: {
-              classPrefix: 'language-',
+              classPrefix: "language-",
               inlineCodeMarker: null,
               aliases: {},
               showLineNumbers: false,
@@ -103,12 +98,6 @@ module.exports = {
           },
         ],
       },
-    },
-    {
-      resolve: `gatsby-plugin-disqus`,
-      options: {
-        shortname: `harsh8398-github-io`
-      }
     },
     {
       resolve: `gatsby-plugin-manifest`,
@@ -128,11 +117,5 @@ module.exports = {
         trackingId: "UA-143614136-1",
       },
     },
-    {
-      resolve: `gatsby-plugin-google-adsense`,
-      options: {
-        publisherId: `ca-pub-9496610763282566`
-      },
-    },
   ],
-}
+};

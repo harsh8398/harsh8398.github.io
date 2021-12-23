@@ -1,13 +1,12 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Link } from 'gatsby'
-import Img from 'gatsby-image'
-import Navigation from './navigation'
-import { toKebabCase } from '../helpers'
-import { useStaticQuery, graphql } from 'gatsby'
-import { Disqus, CommentCount } from 'gatsby-plugin-disqus'
+import React from "react";
+import PropTypes from "prop-types";
+import { Link } from "gatsby";
+import Img from "gatsby-image";
+import Navigation from "./navigation";
+import { toKebabCase } from "../helpers";
+import { useStaticQuery, graphql } from "gatsby";
 
-import style from '../styles/post.module.css'
+import style from "../styles/post.module.css";
 
 const Post = ({
   title,
@@ -21,10 +20,10 @@ const Post = ({
   previousPost,
   nextPost,
 }) => {
-  const previousPath = previousPost && previousPost.frontmatter.path
-  const previousLabel = previousPost && previousPost.frontmatter.title
-  const nextPath = nextPost && nextPost.frontmatter.path
-  const nextLabel = nextPost && nextPost.frontmatter.title
+  const previousPath = previousPost && previousPost.frontmatter.path;
+  const previousLabel = previousPost && previousPost.frontmatter.title;
+  const nextPath = nextPost && nextPost.frontmatter.path;
+  const nextLabel = nextPost && nextPost.frontmatter.title;
   const data = useStaticQuery(graphql`
     query SiteUrlQuery {
       site {
@@ -33,13 +32,7 @@ const Post = ({
         }
       }
     }
-  `)
-
-  const disqusConfig = {
-    url: data.site.siteMetadata.siteUrl,
-    identifier: path,
-    title: title,
-  }
+  `);
 
   return (
     <div className={style.post}>
@@ -51,7 +44,7 @@ const Post = ({
           {date} {author && <>— Written by {author}</>}
           {tags ? (
             <div className={style.tags}>
-              {tags.map(tag => (
+              {tags.map((tag) => (
                 <Link to={`/tag/${toKebabCase(tag)}/`} key={toKebabCase(tag)}>
                   <span className={style.tag}>#{tag}</span>
                 </Link>
@@ -76,7 +69,6 @@ const Post = ({
           </>
         ) : (
           <>
-            <CommentCount config={disqusConfig} placeholder={'...'} />
             <div dangerouslySetInnerHTML={{ __html: html }} />
             <Navigation
               previousPath={previousPath}
@@ -84,13 +76,12 @@ const Post = ({
               nextPath={nextPath}
               nextLabel={nextLabel}
             />
-            {(path!=="/about") ? <Disqus config={disqusConfig} /> : ""}
           </>
         )}
       </div>
     </div>
-  )
-}
+  );
+};
 
 Post.propTypes = {
   title: PropTypes.string,
@@ -103,6 +94,6 @@ Post.propTypes = {
   tags: PropTypes.arrayOf(PropTypes.string),
   previousPost: PropTypes.object,
   nextPost: PropTypes.object,
-}
+};
 
-export default Post
+export default Post;

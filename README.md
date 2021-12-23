@@ -1,3 +1,3 @@
-Personal website/blog hosted using github pages at [harsh8398.github.io](https://harsh8398.github.io)
+# alacrity.dev
 
-Gatsby Starter: [gatsby-starter-hello-friend](https://github.com/panr/gatsby-starter-hello-friend)
+My personal blog. Forked from [gatsby-starter-hello-friend](https://github.com/panr/gatsby-starter-hello-friend).

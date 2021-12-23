@@ -1,11 +1,11 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { useStaticQuery, graphql } from 'gatsby'
+import React from "react";
+import PropTypes from "prop-types";
+import { useStaticQuery, graphql } from "gatsby";
 
-import Header from './header'
-import Footer from './footer'
+import Header from "./header";
+import Footer from "./footer";
 
-import '../styles/layout.css'
+import "../styles/layout.css";
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -20,26 +20,21 @@ const Layout = ({ children }) => {
           logoText
           defaultTheme
           copyrights
-          mainMenu {
-            title
-            path
-          }
           showMenuItems
           menuMoreText
         }
       }
     }
-  `)
+  `);
   const {
     title,
     logo,
     logoText,
     defaultTheme,
-    mainMenu,
     showMenuItems,
     menuMoreText,
     copyrights,
-  } = data.site.siteMetadata
+  } = data.site.siteMetadata;
 
   return (
     <div className="container">
@@ -48,18 +43,18 @@ const Layout = ({ children }) => {
         siteLogo={logo}
         logoText={logoText}
         defaultTheme={defaultTheme}
-        mainMenu={mainMenu}
+        mainMenu={[]} // remove this hack
         mainMenuItems={showMenuItems}
         menuMoreText={menuMoreText}
       />
       <div className="content">{children}</div>
       <Footer copyrights={copyrights} />
     </div>
-  )
-}
+  );
+};
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-}
+};
 
-export default Layout
+export default Layout;
