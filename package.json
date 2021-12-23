@@ -1,17 +1,16 @@
 {
-  "name": "gatsby-starter-hello-friend",
-  "description": "A simple starter for Gatsby. That's it.",
+  "name": "harsh8398.github.io",
+  "description": "Harsh Patel's personal blog",
+  "homepage": "https://alacrity.dev",
   "version": "0.2.0",
-  "author": "Radek Kozieł <radoslaw.koziel@gmail.com>",
+  "author": "Harsh Patel <pharsh58@gmail.com>",
   "keywords": [
-    "gatsby",
+    "blog",
     "minimal",
     "starter",
-    "blog",
-    "theme",
-    "dark",
-    "light",
-    "personal site"
+    "personal blog",
+    "Harsh Patel",
+    "alacrity"
   ],
   "license": "MIT",
   "scripts": {
@@ -63,12 +62,5 @@
     "postcss-url": "^8.0.0",
     "prettier": "^1.15.2",
     "rambdax": "^1.8.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/panr/gatsby-starter-hello-friend"
-  },
-  "bugs": {
-    "url": "https://github.com/panr/gatsby-starter-hello-friend/issues"
   }
 }
