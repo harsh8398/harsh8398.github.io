@@ -1,31 +1,27 @@
-const postCssPresetEnv = require(`postcss-preset-env`);
-const postCSSNested = require("postcss-nested");
-const postCSSUrl = require("postcss-url");
-const postCSSImports = require("postcss-import");
-const cssnano = require("cssnano");
-const postCSSMixins = require("postcss-mixins");
-
 module.exports = {
   siteMetadata: {
     title: `Alacrity`,
-    siteUrl: `https://blog.alacrity.dev`,
-    description: `Harsh Patel's Alacrity Blog`,
-    copyrights: "",
-    author: `@harsh8398`,
-    logo: {
-      src: "",
-      alt: "",
+    author: {
+      name: `Harsh Patel`,
+      summary: `I convert ideas into code.`,
     },
-    logoText: "Alacrity",
-    defaultTheme: "dark",
-    postsPerPage: 5,
-    showMenuItems: 0,
-    menuMoreText: "Show more",
-    mainMenu: [],
+    description: `A personal blog by Harsh Patel.`,
+    siteUrl: `https://alacrity.dev/`,
+    social: {
+      github: `harsh8398`,
+      linkedin: `harsh8398`,
+      twitter: `iharsh8398`,
+    },
   },
   plugins: [
-    `babel-preset-gatsby`,
-    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-image`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/blog`,
+        name: `blog`,
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -34,67 +30,84 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: `gatsby-transformer-remark`,
       options: {
-        name: `posts`,
-        path: `${__dirname}/src/posts`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `pages`,
-        path: `${__dirname}/src/pages`,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-postcss`,
-      options: {
-        postCssPlugins: [
-          postCSSUrl(),
-          postCSSImports(),
-          postCSSMixins(),
-          postCSSNested(),
-          postCssPresetEnv({
-            importFrom: "src/styles/variables.css",
-            stage: 1,
-            preserve: false,
-          }),
-          cssnano({
-            preset: "default",
-          }),
+        plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 630,
+            },
+          },
+          {
+            resolve: `gatsby-remark-responsive-iframe`,
+            options: {
+              wrapperStyle: `margin-bottom: 1.0725rem`,
+            },
+          },
+          `gatsby-remark-prismjs`,
+          `gatsby-remark-copy-linked-files`,
+          `gatsby-remark-smartypants`,
         ],
       },
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
-      resolve: `gatsby-transformer-remark`,
+      resolve: `gatsby-plugin-google-analytics`,
       options: {
-        plugins: [
+        trackingId: `UA-143614136-1`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        query: `
           {
-            resolve: "gatsby-remark-embed-video",
-            options: {
-              related: false,
-              noIframeBorder: true,
-            },
-          },
+            site {
+              siteMetadata {
+                title
+                description
+                siteUrl
+                site_url: siteUrl
+              }
+            }
+          }
+        `,
+        feeds: [
           {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 800,
-              quality: 100,
+            serialize: ({ query: { site, allMarkdownRemark } }) => {
+              return allMarkdownRemark.nodes.map(node => {
+                return Object.assign({}, node.frontmatter, {
+                  description: node.excerpt,
+                  date: node.frontmatter.date,
+                  url: site.siteMetadata.siteUrl + node.fields.slug,
+                  guid: site.siteMetadata.siteUrl + node.fields.slug,
+                  custom_elements: [{ "content:encoded": node.html }],
+                })
+              })
             },
-          },
-          {
-            resolve: `gatsby-remark-prismjs`,
-            options: {
-              classPrefix: "language-",
-              inlineCodeMarker: null,
-              aliases: {},
-              showLineNumbers: false,
-              noInlineHighlight: false,
-            },
+            query: `
+              {
+                allMarkdownRemark(
+                  sort: { order: DESC, fields: [frontmatter___date] },
+                ) {
+                  nodes {
+                    excerpt
+                    html
+                    fields {
+                      slug
+                    }
+                    frontmatter {
+                      title
+                      date
+                    }
+                  }
+                }
+              }
+            `,
+            output: "/rss.xml",
+            title: "Alacrity Blog RSS Feed",
           },
         ],
       },
@@ -102,20 +115,21 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-hello-friend`,
-        short_name: `hello-friend`,
+        name: `A personal blog by Harsh Patel`,
+        short_name: `Alacrity`,
         start_url: `/`,
-        background_color: `#292a2d`,
-        theme_color: `#292a2d`,
+        background_color: `#ffffff`,
+        // This will impact how browsers show your PWA/website
+        // https://css-tricks.com/meta-theme-color-and-trickery/
+        // theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/profile.jpg`,
+        icon: `src/images/site-icon.png`, // This path is relative to the root of the site.
       },
     },
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: "UA-143614136-1",
-      },
-    },
+    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-postcss`,
+    // this (optional) plugin enables Progressive Web App + Offline functionality
+    // To learn more, visit: https://gatsby.dev/offline
+    // `gatsby-plugin-offline`,
   ],
-};
+}

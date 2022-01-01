@@ -1,2 +1,4 @@
-// prismjs color theme
-require('./src/styles/prism.css')
+import "./src/styles/global.css"
+
+// Highlighting for code blocks
+import "prismjs/themes/prism-tomorrow.css"
