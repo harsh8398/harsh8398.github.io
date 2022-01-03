@@ -29,35 +29,42 @@ const Layout = ({ location, title, children }) => {
   return (
     <ThemeProvider>
       <div className="max-w-screen-sm mx-auto px-4">
-        <header className="my-8">
-          <div className="flex justify-between">
-            {header}
-            <ThemeSwitch />
-          </div>
+        <header className="my-8 flex justify-between">
+          {header}
+          <ThemeSwitch />
         </header>
         <main>{children}</main>
         {isRootPath && (
-          <footer className="my-8 dark:text-primary-night text-primary-day font-semibold">
-            <a
-              href="https://github.com/harsh8398"
+          <footer className="my-8 dark:text-primary-night text-primary-day font-semibold flex justify-between">
+            <div>
+              <Link
+                href="https://github.com/harsh8398"
+                className="hover:underline decoration-underline-day dark:decoration-underline-night"
+              >
+                github
+              </Link>
+              &nbsp;&middot;&nbsp;
+              <Link
+                href="https://community.splunk.com/t5/user/viewprofilepage/user-id/156506"
+                className="hover:underline decoration-underline-day dark:decoration-underline-night"
+              >
+                splunk
+              </Link>
+              &nbsp;&middot;&nbsp;
+              <Link
+                href="https://linkedin.com/in/harsh8398"
+                className="hover:underline decoration-underline-day dark:decoration-underline-night"
+              >
+                linkedin
+              </Link>
+            </div>
+            <Link
+              to="/rss.xml"
               className="hover:underline decoration-underline-day dark:decoration-underline-night"
+              itemProp="url"
             >
-              github
-            </a>
-            &nbsp;&middot;&nbsp;
-            <a
-              href="https://linkedin.com/in/harsh8398"
-              className="hover:underline decoration-underline-day dark:decoration-underline-night"
-            >
-              linkedin
-            </a>
-            &nbsp;&middot;&nbsp;
-            <a
-              href="mailto:pharsh58@gmail.com"
-              className="hover:underline decoration-underline-day dark:decoration-underline-night"
-            >
-              mail
-            </a>
+              rss
+            </Link>
           </footer>
         )}
       </div>
