@@ -1,4 +1,4 @@
 import "./src/styles/global.css"
 
 // Highlighting for code blocks
-import "prismjs/themes/prism-tomorrow.css"
+import "./src/styles/dracula-prismjs.css"

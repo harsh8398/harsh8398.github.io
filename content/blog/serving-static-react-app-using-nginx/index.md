@@ -7,7 +7,7 @@ date: "2022-01-08"
 ## Creating a react app
 
 First, lets create a basic react app using [create-react-app](https://create-react-app.dev/):
-```shell
+```shell{promptHost: alacrity.dev}
 npx create-react-app nginx-app
 ```
 
@@ -17,12 +17,12 @@ If you followed the steps to run app displayed on your CLI, you should see the f
 ## Adding routes
 
 Install [react-router](https://reactrouterdotcom.fly.dev/docs/en/v6) using:
-```shell
+```shell{promptHost: alacrity.dev}
 npm install react-router-dom@6
 ```
 
 For simplicity lets assume following is our boring `App.js`:
-```jsx
+```jsx{20-24}
 import { BrowserRouter, Link, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -66,7 +66,7 @@ Since most static file servers use file based routing we are treated with 404 re
 ![Issue with SPA routing](nginx-404.png)
 
 To fix this lets add following nginx config to `/etc/nginx/sites-available/default` and then restart nginx.
-```nginx
+```nginx{13-17}
 # default
 server {
   listen 80;
