@@ -2,6 +2,7 @@ const typography = require("@tailwindcss/typography")
 const colors = require("tailwindcss/colors")
 
 module.exports = {
+  jit: true,
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   darkMode: "class",
   theme: {
@@ -20,7 +21,6 @@ module.exports = {
       },
       fontFamily: {
         sans: ["Inter", "Helvetica", "sans-serif"],
-        serif: ["Hahmlet", "Times New Roman", "serif"],
         mono: ["Fira Code", "Courier New", "monospace"],
       },
     },

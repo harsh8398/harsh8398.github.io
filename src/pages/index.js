@@ -54,7 +54,7 @@ const BlogIndex = ({ data, location }) => {
                       __html: post.frontmatter.description || post.excerpt,
                     }}
                     itemProp="description"
-                    className="text-muted-day dark:text-muted-night font-semibold"
+                    className="text-muted-day dark:text-muted-night"
                   />
                 </section>
               </article>
