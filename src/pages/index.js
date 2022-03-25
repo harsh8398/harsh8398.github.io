@@ -12,7 +12,16 @@ const BlogIndex = ({ data, location }) => {
   if (posts.length === 0) {
     return (
       <Layout location={location} title={siteTitle}>
-        <Seo title="All posts" />
+        <Seo
+          title="All posts"
+          // TODO: remove this temporary solution for link preview
+          meta={[
+            {
+              property: `og:image`,
+              content: `https://alacrity.dev/icons/icon-256x256.png`,
+            },
+          ]}
+        />
         <Bio />
         <p>
           No blog posts found. Add markdown posts to "content/blog" (or the
