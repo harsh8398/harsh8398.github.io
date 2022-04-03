@@ -6,6 +6,7 @@ module.exports = {
       summary: `I convert ideas into code.`,
     },
     description: `A personal blog by Harsh Patel.`,
+    previewImage: `site-preview.png`,
     siteUrl: `https://alacrity.dev/`,
     social: {
       github: `harsh8398`,
