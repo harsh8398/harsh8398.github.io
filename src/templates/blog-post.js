@@ -15,6 +15,14 @@ const BlogPostTemplate = ({ data, location }) => {
       <Seo
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
+        meta={
+          post.frontmatter.previewImage && [
+            {
+              property: `og:image`,
+              content: `https://alacrity.dev/${post.frontmatter.previewImage}`,
+            },
+          ]
+        }
       />
       <article itemScope itemType="http://schema.org/Article">
         <header>
