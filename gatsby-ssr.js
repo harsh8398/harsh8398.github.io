@@ -28,6 +28,17 @@ const MagicScriptTag = () => {
   // eslint-disable-next-line react/no-danger
   return <script dangerouslySetInnerHTML={{ __html: codeToRunOnClient }} />
 }
-export const onRenderBody = ({ setPreBodyComponents }) => {
+
+const googleAdSense = (
+  <script
+    key="google-ads"
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9496610763282566"
+    crossOrigin="anonymous"
+  ></script>
+)
+
+export const onRenderBody = ({ setHeadComponents, setPreBodyComponents }) => {
+  setHeadComponents(googleAdSense)
   setPreBodyComponents(<MagicScriptTag key="magicscripttag" />)
 }
