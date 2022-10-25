@@ -3,7 +3,7 @@ module.exports = {
     title: `Alacrity`,
     author: {
       name: `Harsh Patel`,
-      summary: `I convert ideas into code.`,
+      summary: `A Software Engineer implementing ostrich algorithms.`,
     },
     description: `A personal blog by Harsh Patel.`,
     previewImage: `site-preview.png`,
