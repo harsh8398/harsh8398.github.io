@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Alacrity Blog RSS Feed]]></title><description><![CDATA[A personal blog by Harsh Patel.]]></description><link>https://alacrity.dev</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 13 Apr 2023 23:54:32 GMT</lastBuildDate><item><title><![CDATA[Better Coding Practices / Python / Part-1]]></title><description><![CDATA[Introduction Code review is an integral part of a developer’s day-to-day life. Getting mega pint of code review comments has lots of…]]></description><link>https://alacrity.dev/better-coding-practices-python-part-1/</link><guid isPermaLink="false">https://alacrity.dev/better-coding-practices-python-part-1/</guid><pubDate>Sat, 02 Jul 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;Code review is an integral part of a developer’s day-to-day life. Getting mega pint of code review comments has lots of problems but most importantly it hurts developer-ego! I hope you’ll find this article helpful.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Disclaimer&lt;/strong&gt;: This blog does not claim to be one-and-only solution for all coding problems. Apart from some adopted community guidelines everything is subjective to the coder or reviewer. This is merely my opinions and compiled list of bad coding practices I’ve found through my experience. All the code examples are made to demonstrate a single problem at a time.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;1. Variable Names&lt;/h2&gt;
+&lt;h3&gt;Bad&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;temp &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;banana&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;yellow&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;apple&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;red&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;grape&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;green&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+list1 &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+list2 &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; k&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; v &lt;span class=&quot;token keyword&quot;&gt;in&lt;/span&gt; temp&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;items&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    list1&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;append&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;k&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    list2&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;append&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;v&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string-interpolation&quot;&gt;&lt;span class=&quot;token string&quot;&gt;f&quot;fruits: &lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;list1&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string-interpolation&quot;&gt;&lt;span class=&quot;token string&quot;&gt;f&quot;colors: &lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;list2&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Good&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;fruit_colors &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;banana&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;yellow&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;apple&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;red&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;grape&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;green&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+fruits &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+colors &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; fruit&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; color &lt;span class=&quot;token keyword&quot;&gt;in&lt;/span&gt; fruit_colors&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;items&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    fruits&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;append&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;fruit&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    colors&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;append&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;color&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string-interpolation&quot;&gt;&lt;span class=&quot;token string&quot;&gt;f&quot;fruits: &lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;fruits&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string-interpolation&quot;&gt;&lt;span class=&quot;token string&quot;&gt;f&quot;colors: &lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;colors&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Pros&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Code readability&lt;/li&gt;
+&lt;li&gt;Less-prone to bugs&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;2. Exeption Handling&lt;/h2&gt;
+&lt;h3&gt;Bad&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    fruit_colors &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;banana&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;yellow&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;apple&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;red&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;grape&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;green&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+    color &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; fruit_colors&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;watermelon&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;except&lt;/span&gt; Exception&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;Failed to get color of watermelon :(&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Good&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;fruit_colors &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;banana&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;yellow&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;apple&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;red&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;grape&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;green&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    color &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; fruit_colors&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;watermelon&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;except&lt;/span&gt; KeyError&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;Failed to get color of watermelon :(&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Pros&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Code readability&lt;/li&gt;
+&lt;li&gt;Easy troubleshooting&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;3. Utilizing Standard Library&lt;/h2&gt;
+&lt;h3&gt;Bad&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;fruits &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;apple&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;banana&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;grape&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+
+i &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; fruit &lt;span class=&quot;token keyword&quot;&gt;in&lt;/span&gt; fruits&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string-interpolation&quot;&gt;&lt;span class=&quot;token string&quot;&gt;f&quot;&lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;i&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;: &lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;fruit&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    i &lt;span class=&quot;token operator&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Good&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;fruits &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;apple&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;banana&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;grape&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; i&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; fruit &lt;span class=&quot;token keyword&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;enumerate&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;fruits&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string-interpolation&quot;&gt;&lt;span class=&quot;token string&quot;&gt;f&quot;&lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;i&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;: &lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;fruit&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Pros&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Compact&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;4. Error Logging&lt;/h2&gt;
+&lt;h3&gt;Bad&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    res &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; requests&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;get&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;https://www.google.com&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    res&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;raise_for_status&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    logging&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;info&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;Success!&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;except&lt;/span&gt; Exception &lt;span class=&quot;token keyword&quot;&gt;as&lt;/span&gt; e&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    logging&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;error&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string-interpolation&quot;&gt;&lt;span class=&quot;token string&quot;&gt;f&quot;Unexpected error occured: &lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;e&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Good&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    res &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; requests&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;get&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;https://www.google.com&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    res&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;raise_for_status&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    logging&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;info&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;Success!&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;except&lt;/span&gt; HTTPError &lt;span class=&quot;token keyword&quot;&gt;as&lt;/span&gt; err&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    logging&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;error&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;token string-interpolation&quot;&gt;&lt;span class=&quot;token string&quot;&gt;f&quot;Request failed with status code: &lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;err&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;response&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;status_code&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;except&lt;/span&gt; Exception&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token comment&quot;&gt;# logging.exception logs traceback information&lt;/span&gt;
+    logging&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;exception&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;Unexpected error occured:&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Pros&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Code readability&lt;/li&gt;
+&lt;li&gt;Easy troubleshooting&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;5. Block Comments&lt;/h2&gt;
+&lt;h3&gt;Bad&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;username &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; username&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;lower&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+username &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; username&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;strip&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+username &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; re&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;sub&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;r&quot;\s+&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; username&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;not&lt;/span&gt; re&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;match&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;r&quot;^[a-zA-Z0-9_]{5,20}$&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; username&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;Invalid username&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    exit&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Good&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# Perform string transforms on the username&lt;/span&gt;
+username &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; username&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;lower&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+username &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; username&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;strip&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+username &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; re&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;sub&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;r&quot;\s+&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; username&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;# Check if username is valid&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;not&lt;/span&gt; re&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;match&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;r&quot;^[a-zA-Z0-9_]{5,20}$&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; username&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;Invalid username&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    exit&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Pros&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Code readability&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;Conclusion&lt;/h1&gt;
+&lt;p&gt;This blog is a part of a series and each of these points can be extended with some advanced scenarios. Unfortunately, I can’t mention all the scenarios in a single blog so I will try to cover other cases in future parts. Feel free to reach out if you have any questions, suggestions for improvments or any good coding practice you’ve found.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Yarn Audit at Scale using Splunk]]></title><description><![CDATA[GitHub announced the general availability of security alerts on November 2017. These alerts are visible to repository maintainers and help…]]></description><link>https://alacrity.dev/yarn-audit-at-scale-with-splunk/</link><guid isPermaLink="false">https://alacrity.dev/yarn-audit-at-scale-with-splunk/</guid><pubDate>Sun, 03 Apr 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;GitHub announced the general availability of security alerts on &lt;a href=&quot;https://github.blog/2017-11-16-introducing-security-alerts-on-github/&quot;&gt;November 2017&lt;/a&gt;. These alerts are visible to repository maintainers and help identify potential vulnerable third-party libraries used in the project. You are also presented with possible remediation steps to resolve the vulnerabilities. GitHub also offers automated PRs from dependabot, although you would still need to triage some alerts time-to-time if dependabot is unable to.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/119b210c12d772aa9a21abba2fde4b15/12e1b/dependabot-prs.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 25.949367088607595%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAABJ0AAASdAHeZh94AAAA3UlEQVQY042PSW6EMBBFuUoztDGDCzB2MzWtAJFyh9z/HC9yk0SJlEUWTzWo6lf96FpZCuOoxaOrjiRvSHWgJcnlSVac+dlvyIqOWJlnL8TUCJlrSIwQqbrHji+oqv8ejFVNomrisPApGoTOYy1lO1I2A1U3UcqI7BPz+0H1uBGFD+204eYDO250w4Nm2DHDK8ZOmH5B3J3Gr4hfz/hVuzviVqRfEbuizY0o2BG/4JaDfg7stONOObyh+w1tPPmfuF+5Fk94LgoWg6j+MaTKlrSwxNXARRku1/pfBK0P68San05v0bEAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Dependabot PRs&quot;
+        title=&quot;Dependabot PRs&quot;
+        src=&quot;/static/119b210c12d772aa9a21abba2fde4b15/f058b/dependabot-prs.png&quot;
+        srcset=&quot;/static/119b210c12d772aa9a21abba2fde4b15/c26ae/dependabot-prs.png 158w,
+/static/119b210c12d772aa9a21abba2fde4b15/6bdcf/dependabot-prs.png 315w,
+/static/119b210c12d772aa9a21abba2fde4b15/f058b/dependabot-prs.png 630w,
+/static/119b210c12d772aa9a21abba2fde4b15/40601/dependabot-prs.png 945w,
+/static/119b210c12d772aa9a21abba2fde4b15/78612/dependabot-prs.png 1260w,
+/static/119b210c12d772aa9a21abba2fde4b15/12e1b/dependabot-prs.png 1607w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;You may ask how GitHub decides when to raise an alert? These alerts are consequences of advisories reported on &lt;a href=&quot;https://github.com/advisories?query=type%3Areviewed&quot;&gt;GitHub Advisory Database&lt;/a&gt;.
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 35.44303797468354%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAABJ0AAASdAHeZh94AAABNUlEQVQoz02RSW7EIBREfZVuj2AGY8Bjuye3kijKIqtcIPscIqsscueKPm07vSg9AaKKX0SmPaGdnuDHG/w4oznc0J9eIOoBMauQ8hopN0HJwn2usMtk4KNoL8qEBVMehfLIyjqokLRuQGdZaZf9fz4aEldRWCSfv2A/fsHevlG+/4CdP1FIC+kOyKVDupktEm4J9Fsw021QaXpESdkgER323AfG3KHuzhgur3DDDDfOdw4z7DDDNxO0HSDsGEKVn6D9EVVzhKg7RAnT2OcSu7REnEvEhQ792eEK051h+2sIIJr+AusnKDIzHbh0YYpcED1y2ZKhCSbUAXFfaHDdQvspGMv6/hpFDBXcR895hXjtLxXhA8uaRmZVMFkNSZRIfazd8KoDVx6Mm3Bxu7P9rgJNyrTDHyD12ebkKNLXAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;GitHub Advisory Database&quot;
+        title=&quot;GitHub Advisory Database&quot;
+        src=&quot;/static/8d2a71a70c35ed59f0796a8a00454cd4/f058b/gh-advisory-db.png&quot;
+        srcset=&quot;/static/8d2a71a70c35ed59f0796a8a00454cd4/c26ae/gh-advisory-db.png 158w,
+/static/8d2a71a70c35ed59f0796a8a00454cd4/6bdcf/gh-advisory-db.png 315w,
+/static/8d2a71a70c35ed59f0796a8a00454cd4/f058b/gh-advisory-db.png 630w,
+/static/8d2a71a70c35ed59f0796a8a00454cd4/40601/gh-advisory-db.png 945w,
+/static/8d2a71a70c35ed59f0796a8a00454cd4/78612/gh-advisory-db.png 1260w,
+/static/8d2a71a70c35ed59f0796a8a00454cd4/9c2cf/gh-advisory-db.png 1557w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;Overview&lt;/h2&gt;
+&lt;p&gt;In this blog, we will be exploring how to monitor the security state of the node dependencies across multiple repositories with the help of yarn and Splunk. Let us dive right into it.&lt;/p&gt;
+&lt;h2&gt;Workflow&lt;/h2&gt;
+&lt;p&gt;In a nutshell, the implementation we will look at can be presented using the following diagram.
+&lt;img src=&quot;/4828c9b019f0f365a1c21571c3815f97/workflow.svg&quot; alt=&quot;Workflow&quot;&gt;&lt;/p&gt;
+&lt;h2&gt;Collecting Security Alerts in Splunk&lt;/h2&gt;
+&lt;p&gt;We will be using &lt;code class=&quot;language-text&quot;&gt;yarn audit&lt;/code&gt; to get the security alerts for a project. The next step is to figure out how to regularly send the data to Splunk from GitHub or when someone commits to the repository. GitHub actions to the rescue! We can use Splunk &lt;a href=&quot;https://docs.splunk.com/Documentation/Splunk/8.2.5/Data/UsetheHTTPEventCollector&quot;&gt;HTTP Event Collector&lt;/a&gt; to collect data at Splunk-end. For non-Splunk readers, it exposes a webhook where you can post your data on-demand, and Splunk handles the rest. You can find the source code of the GitHub action at &lt;a href=&quot;https://github.com/harsh8398/react-app-with-vuln-telemetry/blob/d5e38063e46d9bfd9c93b873f15c8d38f0af2853/.github/workflows/report-yarn-audit.yml&quot;&gt;harsh8398/react-app-with-vuln-telemetry&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Inspecting Data in Splunk&lt;/h2&gt;
+&lt;p&gt;Let’s inspect the received event in Splunk and identify useful information. Yarn audit returns two types of information.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;auditAdvisory - Each record represents an alert with the third-party dependency details
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/6947c67b3d94fb71e51537a1f5b711fb/b6e34/audit-advisory.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 38.60759493670886%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAABJ0AAASdAHeZh94AAAAx0lEQVQoz52RUWrDMBBEdf9TlRKcQpxC0jMU/BE3tlPJsna1L6ipW5NCIV4YDSOxb4Xknrd7qt2Bl9c3nqqaTX1kuz9S1YdVcl3X036cCWNkGiNxGJiSoDmTV8iVRURQVbBMak8k75nUWFNuGQpCCrB5J8WAmT0stwylpDvjmwaJ4TbkrmHeuz+b8w+Q4oD2HaFAY+CSIpc0MXx70afMnvCSvrJa/gUuJ1LeMo4EU4IK2exf2cL/3hDo/Ug7eNoQSVkf+oyZcQVBgmye7uEiVAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;auditAdvisory&quot;
+        title=&quot;auditAdvisory&quot;
+        src=&quot;/static/6947c67b3d94fb71e51537a1f5b711fb/f058b/audit-advisory.png&quot;
+        srcset=&quot;/static/6947c67b3d94fb71e51537a1f5b711fb/c26ae/audit-advisory.png 158w,
+/static/6947c67b3d94fb71e51537a1f5b711fb/6bdcf/audit-advisory.png 315w,
+/static/6947c67b3d94fb71e51537a1f5b711fb/f058b/audit-advisory.png 630w,
+/static/6947c67b3d94fb71e51537a1f5b711fb/40601/audit-advisory.png 945w,
+/static/6947c67b3d94fb71e51537a1f5b711fb/b6e34/audit-advisory.png 1103w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;auditSummary - Includes count of vulnerabilities and dependencies
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/91acbf2d4eca5c92bdf990080d5564b8/d5bfb/audit-summary.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 44.30379746835443%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAABJ0AAASdAHeZh94AAAA20lEQVQoz5WQb0vDMBCH+/0/lYi0IqviRBCmyBz+e7Ha0WW5JL08ktAXLQprf3Bccrl78kuKq5s7Lqua69sHqtWai6qmrNd5Xa7uKXOeH4X3gX3zQ9seEOdwxiDmhO8VjRFVXRRFHIaCDxkQRbAvG2S3xXVHokaWqEiwsdR75PUZ+/SIfdtijc31dPGcKHRwkDY5q+Lfd7jPD4IVQjofDZx3GOPEQZL7/sKLG1pSfcmTR8DsBPDNHjVmWp9JnQJTFiE4oQse6cMf97OBSb1G2s7SHC0H8fz3HeeAv5QsvCJIGH9FAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;auditSummary&quot;
+        title=&quot;auditSummary&quot;
+        src=&quot;/static/91acbf2d4eca5c92bdf990080d5564b8/f058b/audit-summary.png&quot;
+        srcset=&quot;/static/91acbf2d4eca5c92bdf990080d5564b8/c26ae/audit-summary.png 158w,
+/static/91acbf2d4eca5c92bdf990080d5564b8/6bdcf/audit-summary.png 315w,
+/static/91acbf2d4eca5c92bdf990080d5564b8/f058b/audit-summary.png 630w,
+/static/91acbf2d4eca5c92bdf990080d5564b8/40601/audit-summary.png 945w,
+/static/91acbf2d4eca5c92bdf990080d5564b8/d5bfb/audit-summary.png 1072w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Representing Data in a Splunk Dashboard&lt;/h2&gt;
+&lt;p&gt;Based on all the information available from the &lt;code class=&quot;language-text&quot;&gt;yarn audit&lt;/code&gt; output, we can quickly present it in a more digestible form using Splunk. Following is the primary example dashboard that I’ve built.
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/f29a9e82c557b967292b11cb0ded6927/c1b63/yarn-audit-splunk-dashboard.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 176.58227848101265%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAjCAYAAACU9ioYAAAACXBIWXMAAAsTAAALEwEAmpwYAAAHN0lEQVRIx42W2Y8cVxXGC8m8IUESWQmZmV6ra+murr1r6e7qdXqmezaPPRnPeGwnOMvEiDghiSALBJIQk9XOIsdIKLYwWRGBgKKgABEvQYQ8IEVIPIAUQh4QD/wLSD90b9sGoUjh4atzdJfvnvudc+tepdlfIu6O6Y7WaA2W6SxMbTa/Snt+Rfq9xXWS3pgoW5CIuwuE6Ty9zTXWTxxmYXKQ5QM7DCYHUOYn62xsH2VpfZPJ2nUScTbEizKcRlvCizv4ySV0JZxGi/54P0v7D7O+fYzx+g7ZaBVltHyAnWPHWdp/iPG+LYm1zSOsbByWvli5PZhQT+exkyFOlOElvYvo4grEl9BBcZMhje4aUXeNejTCDPoYXpdqOKQaDqTVnTZh1CZtdoiiFMcJsG2fuu1L6zoBjuPj+jHK9dfFPHl3zKN3Nvnmrs3Xj1W55yabe46Z0r/vRpPbjtiUVm9A3ThOYe0m9g63JObGO3xxdIgr+we5YrhNPltB+elTCfzRh9+F8J4Nf9qCvxyH9+rwfgx/CPjH2y323HkO5asvo9x+gdpTv2DntffZfvX3XPXtn6DccQHlnte58tD9KGe/kfDPtwI+/HHIR6/7fPRGi7/9vCf9v74e8vc3fH57PuVzu0+yZ/dZ9txymi/cdobKvS+w9/bn2XPL03z25tN85vjzXH3gBEora7I87rCy1CNr+fhuBd+rEIZVAt8gDEyCoIaXDfG7I6LhBDPOuEK1uNb0KFg+ectnruahuTFKpeoyU1CZK+lcmyuR16roVZuZXBnd8siVddmnGSZxkuIHIXNFlcSzMHSN2UKJklqhUCyh1xwUo+5SrGgUyypG2ODgc89yZvdWJlkH3XZQdYOSZlAxLWqOS06rcXytzcdnruedb23gORZzZZ2CqskAFN1yKVR0ZmfmiLe2+fJv3uH+n73BvoceIpcvUtQEoSknFMoVrsmXeeu+dXh5l3/98GZuWk7Zm1MpVQShOyXMqxUqRhXDD1k/dYqtl1/CXVpmLlegWNFlhFOrc01B5YZxwp9P7/DmvfuoW1Vy5eliktCoe3J1w7JRNYOyblKp1SkUy9IvVkRbVZKWNQNVN5ktadh1C9UwKWomXhhRMWtTQjdMaWZdGmkLqxFTqBgUyhp5zWT2YnSCsJG08JI2dpig1z1mSxW5mCAXGoodiODklqdbMmiaJnbVpGwauFWT2DCZK1ekjlXLphe79BOPbuzKrItos8gl8urMllQMGWEjpajqaKbJfaceY7i6wuzsDJPNDe46eRKvVidXMUgbAR88fkji3Yc30cwqOVXnVw9s8IMTS+ydLU4JLTeUmnndFsd+/Usa2ztc/fmrSG7eZfftN7l1exm16hD5Nh8/d4QPnznMB49tSd2vzqu8++AG7zx8HYPFAUI+pVb3SCYT+tffwOTOu4gWxmiaQbKyyuIdt1NvhGjVOlEUcfLGJb7zpQkPHF2kZrtoNZv7jyxy63qXolnHcgMUP25he4HMcKmkSq2MuiP1KZUq5IoqqlEjiJvMVarMlA1Z3DXHQ6ta5CpVZss6+ZI6zbIdJARxSkk3yau6tAVVJy9qq6LLZAmbE8kRWb9cl8Z/2jRDzpEnRRPnVdW5tqBS0ExM26dsWOhuSNlymCtpsv2auSIFrXq5P18xUc26LJ+9M3n2zuQoGXWUqN2n0RT3R0KYtvGilHoQsfr4E6w98ghRMyPN+rKv5oZYXohuOaSdPmmnR5C08OMmbiOhLv7YcbtPNpin6vhT2J6cdPS1V9l54QWCKGU0WWawOKHm+FO4PlGrQ7s/pNUb0O7Pk2RdnDBBCZs9wrRDkHZoNLsESSZvtEPnz7N15ozsa/VGEm6jiRe1qQvdk0zamhdhXYQTNlHEjTacrBOkPcLmgLDZx0/7HHzlFTbPnaPdHzNa3k82XJLXqRjnxV0arcFl/9LVKvqVOBvQ7A4JkjaNprh329hBzBN3f40Hv3JCRpgNFohaXXmORZQimjDN5BaFX/cjLD/CFoUdtXqkWZeq40ltqq6P5fi8Olnh++NlGq2MuJXhNRI5Zqq1GBtc9gVM25XEStodkQ3HRO0BSWeeqNXHizOOP/kUtzzyXZJsSNwe0OotIPQWrwehlXxdxJn0heYCbtRGafYW6S+s4kYdqYcXdfDTHts/eo3Nc+fJBhMWVw7QX1yTGn0aFPERiXCjbIpGWz4pjr74Iltnv4flJQwn++iOli9GkclIPhnZNClxS7A3ZfGKIhUCb58/x9bZs7S60zrrjcay6O0gouoGMol1v0HVCaSeAvUgnhJ2BgtSUDFYFLUg3LlwgYNnz8qfgsi+yLIgsLyGPDFTP5T+FIGsS6XVX6QzXCJqDxEJittD/LTL4ZdekielO7/EYHGNhZUDRBdrT2xNJDAQL69LUl2EknRGUp//1tBLOmycfob1k4/SaPblYgL/O/mToHzagEuPToH/h/DfSuvB2KKGa6UAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Yarn Audit - Splunk Dashboard&quot;
+        title=&quot;Yarn Audit - Splunk Dashboard&quot;
+        src=&quot;/static/f29a9e82c557b967292b11cb0ded6927/f058b/yarn-audit-splunk-dashboard.png&quot;
+        srcset=&quot;/static/f29a9e82c557b967292b11cb0ded6927/c26ae/yarn-audit-splunk-dashboard.png 158w,
+/static/f29a9e82c557b967292b11cb0ded6927/6bdcf/yarn-audit-splunk-dashboard.png 315w,
+/static/f29a9e82c557b967292b11cb0ded6927/f058b/yarn-audit-splunk-dashboard.png 630w,
+/static/f29a9e82c557b967292b11cb0ded6927/40601/yarn-audit-splunk-dashboard.png 945w,
+/static/f29a9e82c557b967292b11cb0ded6927/c1b63/yarn-audit-splunk-dashboard.png 1200w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;TL;DR&lt;/h2&gt;
+&lt;p&gt;We can use a continuous integration workflow to post security alerts data from multiple repositories to Splunk and get a single-pane view of security alerts spanning multiple GitHub repositories or even from alternative git-hosted platforms.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Serve static React app using NGINX]]></title><description><![CDATA[Creating a react app First, lets create a basic react app using create-react-app: If you followed the steps to run app displayed on your CLI…]]></description><link>https://alacrity.dev/serving-static-react-app-using-nginx/</link><guid isPermaLink="false">https://alacrity.dev/serving-static-react-app-using-nginx/</guid><pubDate>Sat, 08 Jan 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;Creating a react app&lt;/h2&gt;
+&lt;p&gt;First, lets create a basic react app using &lt;a href=&quot;https://create-react-app.dev/&quot;&gt;create-react-app&lt;/a&gt;:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;command-line-prompt&quot;&gt;&lt;span data-user=root data-host=alacrity.dev&gt;&lt;/span&gt;&lt;/span&gt;npx create-react-app nginx-app&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;If you followed the steps to run app displayed on your CLI, you should see the following page or similar page based on the package version you used.
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/dceea9cbf276654809db45a28f9279f0/146da/first-page.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 90.50632911392405%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAASCAYAAABb0P4QAAAACXBIWXMAABJ0AAASdAHeZh94AAACGElEQVQ4y6WT22sTQRTG949J9jp7z8xONpts9paLSU3xLioVimJFLNgnRRSvD2JFFBV8EaT/5yczjdE2m5jiw49hZr7zzTl7ziqsk6KfDxAnKULaRkg5aBQjSXMk/QJxL1tJR2jmdLNS6hXGEyTdDCzqwA8j8HYCxw2gGeQY/SSqbkE3bdheiJhG2K6GyKsRfFqBRikU06YQGDaF5TAQL5J7nYRzWksYgnkccRksl8GwmdwrmhWinhY0sgJxN9epp+KUugz+h5WG4rU/ewpdfoa6uw0MfwdolmiOD1X3oGoONMODZgZrTddn6DBEN+4jnN1EcO4q2PV7MFx+tgyl2KZoNiy42RTt2/sonn9G8eIL2LW7cLMteSc0dcb1JRs+SLsA39nH4N0PlC+/StPR4RHYlTtrs6wxpFBVG97wIuLdA+RPP2L4/idGH46QHryRZ245kxrZrLOUTC/vIntyiOrtdxTPPqF89Q3+6JKsYKNvuCjDprKrTm8MfusB0kevkew9Bt95uOj+qhFSlkclhGoGi9XJtqARCisuYffGUMXo/KU5bbqUoeVGcIJY/te2x2GYgTwjDoNlt0A8LnH89voMBeLVFu+jGJ5H3K1QjbfR6w+RJAWyYoyimiLNx8jKCUaTC9JYNf9RsjBt6P7xqrmwOgOQdAKSz2BEOZq6i6bho6F7m5V8omtWKOdRNMfpT0F4Ls/WxfwCnPhDEVMFfywAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Basic React app&quot;
+        title=&quot;Basic React app&quot;
+        src=&quot;/static/dceea9cbf276654809db45a28f9279f0/f058b/first-page.png&quot;
+        srcset=&quot;/static/dceea9cbf276654809db45a28f9279f0/c26ae/first-page.png 158w,
+/static/dceea9cbf276654809db45a28f9279f0/6bdcf/first-page.png 315w,
+/static/dceea9cbf276654809db45a28f9279f0/f058b/first-page.png 630w,
+/static/dceea9cbf276654809db45a28f9279f0/146da/first-page.png 943w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;Adding routes&lt;/h2&gt;
+&lt;p&gt;Install &lt;a href=&quot;https://reactrouterdotcom.fly.dev/docs/en/v6&quot;&gt;react-router&lt;/a&gt; using:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;command-line-prompt&quot;&gt;&lt;span data-user=root data-host=alacrity.dev&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; react-router-dom@6&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;For simplicity lets assume following is our boring &lt;code class=&quot;language-text&quot;&gt;App.js&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight has-highlighted-lines&quot; data-language=&quot;jsx&quot;&gt;&lt;pre class=&quot;language-jsx&quot;&gt;&lt;code class=&quot;language-jsx&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; BrowserRouter&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; Link&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; Routes&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; Route &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;react-router-dom&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;App&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token plain-text&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;token plain-text&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;BrowserRouter&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token plain-text&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;token plain-text&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;nav&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token plain-text&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;token plain-text&quot;&gt;          &lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;ul&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token plain-text&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;token plain-text&quot;&gt;            &lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;li&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token plain-text&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;token plain-text&quot;&gt;              &lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;Link&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;/&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token plain-text&quot;&gt;Root&lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;Link&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token plain-text&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;token plain-text&quot;&gt;            &lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;li&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token plain-text&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;token plain-text&quot;&gt;            &lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;li&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token plain-text&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;token plain-text&quot;&gt;              &lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;Link&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;/route1&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token plain-text&quot;&gt;Route 1&lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;Link&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token plain-text&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;token plain-text&quot;&gt;            &lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;li&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token plain-text&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;token plain-text&quot;&gt;            &lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;li&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token plain-text&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;token plain-text&quot;&gt;              &lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;Link&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;/route2&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token plain-text&quot;&gt;Route 2&lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;Link&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token plain-text&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;token plain-text&quot;&gt;            &lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;li&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token plain-text&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;token plain-text&quot;&gt;          &lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;ul&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token plain-text&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;token plain-text&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;nav&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token plain-text&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;gatsby-highlight-code-line&quot;&gt;&lt;span class=&quot;token plain-text&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;Routes&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token plain-text&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;gatsby-highlight-code-line&quot;&gt;&lt;span class=&quot;token plain-text&quot;&gt;          &lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;Route&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;/&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;token script language-javascript&quot;&gt;&lt;span class=&quot;token script-punctuation punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;h1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token plain-text&quot;&gt;Root&lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;h1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;/&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token plain-text&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;gatsby-highlight-code-line&quot;&gt;&lt;span class=&quot;token plain-text&quot;&gt;          &lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;Route&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;route1&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;token script language-javascript&quot;&gt;&lt;span class=&quot;token script-punctuation punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;h1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token plain-text&quot;&gt;Route 1&lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;h1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;/&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token plain-text&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;gatsby-highlight-code-line&quot;&gt;&lt;span class=&quot;token plain-text&quot;&gt;          &lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;Route&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;route2&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;token script language-javascript&quot;&gt;&lt;span class=&quot;token script-punctuation punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;h1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token plain-text&quot;&gt;Route 2&lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;h1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;/&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token plain-text&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;gatsby-highlight-code-line&quot;&gt;&lt;span class=&quot;token plain-text&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;Routes&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token plain-text&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token plain-text&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;BrowserRouter&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token plain-text&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;token plain-text&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;default&lt;/span&gt; App&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;How it looks:
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/a13bf768c880a3067f70e86244d983e8/d6331/simple-routes.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 54.43037974683544%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABJ0AAASdAHeZh94AAABEUlEQVQoz62Qy07CYBBG//dRboIWS1suTRuI4SJI4uupD9BncSfRhdFoIoop7U8oFHoMTaxsjIT6JSeTmcXkzIiy0UCvW9RNG82oU1aNBLVSRa+ZNOwWVdPGaFgYm2pavyLypTIlpYKm1ThRKhwc5snmijGZbIFM7oh8USFXOCZbKP2J6HT7tDvnDC4u6fYGmFaTXn9IfzCk2TpD31ifaqiqvhPCdV3e3yZ8TlzkTOJ5PtPpNMbzPHxfIuXuiDBc8Pww5mk0hojUEcvlgtfHD+5vX5DePB6u12uiKNoLEQQBq3BFMF/Eg02+616GN9dXOI7D3Wj0Y5fidhEEc2ZSEoarxC6V4XaTZlGycPuh/2H4BQcY3B447HJPAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Simple router&quot;
+        title=&quot;Simple router&quot;
+        src=&quot;/static/a13bf768c880a3067f70e86244d983e8/f058b/simple-routes.png&quot;
+        srcset=&quot;/static/a13bf768c880a3067f70e86244d983e8/c26ae/simple-routes.png 158w,
+/static/a13bf768c880a3067f70e86244d983e8/6bdcf/simple-routes.png 315w,
+/static/a13bf768c880a3067f70e86244d983e8/f058b/simple-routes.png 630w,
+/static/a13bf768c880a3067f70e86244d983e8/d6331/simple-routes.png 702w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;Serving a static react app using nginx&lt;/h2&gt;
+&lt;p&gt;After getting our production build from &lt;code class=&quot;language-text&quot;&gt;npm run build&lt;/code&gt;, lets put the &lt;code class=&quot;language-text&quot;&gt;build&lt;/code&gt; output to &lt;code class=&quot;language-text&quot;&gt;/var/www/html/&lt;/code&gt; and hit &lt;code class=&quot;language-text&quot;&gt;/route1/&lt;/code&gt; or &lt;code class=&quot;language-text&quot;&gt;/route2&lt;/code&gt; endpoint directly from browser.&lt;/p&gt;
+&lt;p&gt;Since most static file servers use file based routing we are treated with 404 response. Only &lt;code class=&quot;language-text&quot;&gt;/&lt;/code&gt; endpoint is able to load correctly.
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/a0db68a87a8ea76c5bdfdf4eff05eca0/3cb0f/nginx-404.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 46.835443037974684%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAABJ0AAASdAHeZh94AAABNUlEQVQoz52PT0/CUBDE+21AsSpWKPBoCwXDjfBx8UoJIBzwhpcWMDU0kGCAS8u/n2lRE01KopNM3r6dncmulBEGwqhSqdQwzRpqTqDc51Du1YhqXkMYJmpBO1Ho5IROvliK+lqpglaqUtDN6C/puomqCnSjQi5fRL5RKAgD3SiTyeaR5TSJZIqLS5lE8gr5Os2dko1eoZWp1xsUSw1Stw8IUURyxmPGEScRbdthMp3y1OvRbD5iWRbdbo9Wq0Wn06VttekPBtGs45y8Tlh/+iVi8Oa+Mhw+43ketm3jui4voxGDfp+Z58XZkHa7Hdvt9geDIIjE4+GA7/vs93sCP/juhwjr374wSzoej8TxfblkPp+zXq1YLBZ43oz1ZsM5T+zJofgfxG74FfpXTTq3XVzAuQs+ANiTYN/tf0gJAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Issue with SPA routing&quot;
+        title=&quot;Issue with SPA routing&quot;
+        src=&quot;/static/a0db68a87a8ea76c5bdfdf4eff05eca0/f058b/nginx-404.png&quot;
+        srcset=&quot;/static/a0db68a87a8ea76c5bdfdf4eff05eca0/c26ae/nginx-404.png 158w,
+/static/a0db68a87a8ea76c5bdfdf4eff05eca0/6bdcf/nginx-404.png 315w,
+/static/a0db68a87a8ea76c5bdfdf4eff05eca0/f058b/nginx-404.png 630w,
+/static/a0db68a87a8ea76c5bdfdf4eff05eca0/3cb0f/nginx-404.png 708w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;To fix this lets add following nginx config to &lt;code class=&quot;language-text&quot;&gt;/etc/nginx/sites-available/default&lt;/code&gt; and then restart nginx.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight has-highlighted-lines&quot; data-language=&quot;nginx&quot;&gt;&lt;pre class=&quot;language-nginx&quot;&gt;&lt;code class=&quot;language-nginx&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# default&lt;/span&gt;
+&lt;span class=&quot;token directive&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;server&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token directive&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;listen&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;80&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;token directive&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;root&lt;/span&gt; /var/www/html&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token directive&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;index&lt;/span&gt; index.html index.htm index.nginx-debian.html&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;token comment&quot;&gt;# To make sure any assets can get through&lt;/span&gt;
+  &lt;span class=&quot;token directive&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;location&lt;/span&gt; /&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token directive&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;try_files&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;$uri&lt;/span&gt; @rewrites&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;gatsby-highlight-code-line&quot;&gt;  &lt;span class=&quot;token comment&quot;&gt;# If no asset matches, send it to your javascript app.&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;gatsby-highlight-code-line&quot;&gt;  &lt;span class=&quot;token comment&quot;&gt;# Hopefully it&apos;s a route in the app!&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;gatsby-highlight-code-line&quot;&gt;  &lt;span class=&quot;token directive&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;location&lt;/span&gt; @rewrites&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;gatsby-highlight-code-line&quot;&gt;    &lt;span class=&quot;token directive&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;rewrite&lt;/span&gt; ^(.+)$ /index.html last&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;gatsby-highlight-code-line&quot;&gt;  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Now we are able to navigate rotues successfully. Cheers!&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Hello World]]></title><description><![CDATA[Nature amidst COVID-19 or shall I say peace within chaos?]]></description><link>https://alacrity.dev/hello-world/</link><guid isPermaLink="false">https://alacrity.dev/hello-world/</guid><pubDate>Fri, 18 Sep 2020 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/ebeed4aef752fae828740cbfce70e3b9/09d13/wai.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 33.54430379746836%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAHABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAED/8QAFgEBAQEAAAAAAAAAAAAAAAAAAQAC/9oADAMBAAIQAxAAAAGgtAa//8QAFxAAAwEAAAAAAAAAAAAAAAAAAAETA//aAAgBAQABBQKqKoWp/8QAFhEAAwAAAAAAAAAAAAAAAAAAAAES/9oACAEDAQE/AZRKP//EABYRAAMAAAAAAAAAAAAAAAAAAAABEv/aAAgBAgEBPwGmUz//xAAVEAEBAAAAAAAAAAAAAAAAAAAAMf/aAAgBAQAGPwKIj//EABgQAAIDAAAAAAAAAAAAAAAAAAEhABAR/9oACAEBAAE/IW1ZcQT/2gAMAwEAAgADAAAAEPwP/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPxAD/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPxAL/8QAFxABAQEBAAAAAAAAAAAAAAAAAQAhEf/aAAgBAQABPxBbQuTgkDFf/9k=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Location: Wai, Maharastra, India&quot;
+        title=&quot;Location: Wai, Maharastra, India&quot;
+        src=&quot;/static/ebeed4aef752fae828740cbfce70e3b9/828fb/wai.jpg&quot;
+        srcset=&quot;/static/ebeed4aef752fae828740cbfce70e3b9/ff44c/wai.jpg 158w,
+/static/ebeed4aef752fae828740cbfce70e3b9/a6688/wai.jpg 315w,
+/static/ebeed4aef752fae828740cbfce70e3b9/828fb/wai.jpg 630w,
+/static/ebeed4aef752fae828740cbfce70e3b9/0ede0/wai.jpg 945w,
+/static/ebeed4aef752fae828740cbfce70e3b9/3ac88/wai.jpg 1260w,
+/static/ebeed4aef752fae828740cbfce70e3b9/09d13/wai.jpg 6928w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Nature amidst COVID-19 or shall I say peace within chaos?&lt;/em&gt;&lt;/p&gt;</content:encoded></item></channel></rss>
